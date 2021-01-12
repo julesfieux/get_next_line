@@ -6,16 +6,16 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 10:44:24 by jfieux            #+#    #+#             */
-/*   Updated: 2021/01/12 14:43:05 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/01/12 15:55:26 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char *ft_new_line(char *str)
+char	*ft_new_line(char *str)
 {
-	int i;
-	char *res;
+	int		i;
+	char	*res;
 
 	if (!str)
 		return (0);
@@ -34,11 +34,11 @@ char *ft_new_line(char *str)
 	return (res);
 }
 
-char *ft_new_save(char *str)
+char	*ft_new_save(char *str)
 {
-	int i;
-	int j;
-	char *res;
+	int		i;
+	int		j;
+	char	*res;
 
 	if (!str)
 		return (0);
@@ -47,7 +47,7 @@ char *ft_new_save(char *str)
 		i++;
 	if (!str[i])
 	{
-		free (str);
+		free(str);
 		return (0);
 	}
 	if (!(res = malloc(sizeof(char) * ((ft_strlen(str) - i) + 1))))
@@ -57,17 +57,17 @@ char *ft_new_save(char *str)
 	while (str[i] && str[i] != '\n')
 		res[j++] = str[i++];
 	res[j] = '\0';
-	free (str);
+	free(str);
 	return (res);
 }
 
-int get_next_line(int fd, char **line)
+int		get_next_line(int fd, char **line)
 {
-    int			ret;
-    char		*buf;
+	int			ret;
+	char		*buf;
 	static char	*save;
 
-    if (fd < 0 || !line || BUFFER_SIZE < 1)
+	if (fd < 0 || !line || BUFFER_SIZE < 1)
 		return (-1);
 	if (!(buf = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
 		return (-1);
@@ -81,7 +81,7 @@ int get_next_line(int fd, char **line)
 		buf[ret] = '\0';
 		save = ft_strjoin(save, buf);
 	}
-	free (buf);
+	free(buf);
 	*line = ft_new_line(save);
 	save = ft_new_save(save);
 	return (1);
