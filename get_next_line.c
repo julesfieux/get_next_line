@@ -6,15 +6,59 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 10:44:24 by jfieux            #+#    #+#             */
-/*   Updated: 2021/01/12 10:55:30 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/01/12 11:47:57 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char *ft_new_line(char *save)
+char *ft_new_line(char *str)
 {
-	
+	int i;
+	char *res;
+
+	if (!str)
+		return (0);
+	i = 0;
+	while (str[i] && str[i] != '\n')
+		i++;
+	if (!(res = malloc(sizeof(char) * (i + 1))))
+		return (0);
+	i = 0;
+	while (str[i] && str[i] != '\n')
+	{
+		res[i] = str[i];
+		i++;
+	}
+	res[i] = '\0';
+	return (res);
+}
+
+char *ft_new_save(char *str)
+{
+	int i;
+	int j;
+	char *res;
+
+	if (!str)
+		return (0);
+	i = 0;
+	while (str[i] && str[i] != '\n')
+		i++;
+	if (!str[i])
+	{
+		free (str);
+		return (0);
+	}
+	if (!(res = malloc(sizeof(char) * ((ft_strlen(str) - i) + 1))))
+		return (0);
+	i++;
+	j = 0;
+	while (str[i] && str[i] != '\n')
+		res[j++] = str[i++];
+	res[j] = '\0';
+	free (str);
+	return (res);
 }
 
 int get_next_line(int fd, char **line)
@@ -39,4 +83,6 @@ int get_next_line(int fd, char **line)
 	}
 	free (buf);
 	*line = ft_new_line(save);
+	save = ft_new_save(save);
+	return (1);
 }
