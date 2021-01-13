@@ -6,7 +6,7 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 10:42:16 by jfieux            #+#    #+#             */
-/*   Updated: 2021/01/12 15:32:04 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/01/12 16:36:59 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # include <unistd.h>
+# include <stdlib.h>
 
 int get_next_line(int fd, char **line);
 char	*ft_strjoin(char const *s1, char const *s2);
