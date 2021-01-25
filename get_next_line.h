@@ -6,7 +6,7 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 10:42:16 by jfieux            #+#    #+#             */
-/*   Updated: 2021/01/13 10:48:14 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/01/25 14:50:52 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@
 int 	get_next_line(int fd, char **line);
 char	*ft_strjoin(char const *s1, char const *s2);
 int		ft_found_return(char *str);
-int		ft_strlen(const char *str);
+size_t		ft_strlen(const char *str);
 
 #endif

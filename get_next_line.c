@@ -6,7 +6,7 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 10:44:24 by jfieux            #+#    #+#             */
-/*   Updated: 2021/01/13 10:22:04 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/01/25 14:47:22 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	*ft_new_save(char *str)
 		return (0);
 	i++;
 	j = 0;
-	while (str[i] && str[i] != '\n')
+	while (str[i])
 		res[j++] = str[i++];
 	res[j] = '\0';
 	free(str);
@@ -67,6 +67,7 @@ int		get_next_line(int fd, char **line)
 	char		*buf;
 	static char	*save;
 
+	ret = 1;
 	if (fd < 0 || !line || BUFFER_SIZE < 1)
 		return (-1);
 	if (!(buf = malloc(sizeof(char) * (BUFFER_SIZE + 1))))
@@ -84,5 +85,7 @@ int		get_next_line(int fd, char **line)
 	free(buf);
 	*line = ft_new_line(save);
 	save = ft_new_save(save);
+	if (ret == 0)
+		return (0);
 	return (1);
 }
