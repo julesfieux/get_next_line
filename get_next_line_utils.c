@@ -6,7 +6,7 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 10:44:51 by jfieux            #+#    #+#             */
-/*   Updated: 2021/01/25 14:48:06 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/01/25 19:04:20 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,39 +24,44 @@ size_t		ft_strlen(const char *str)
 	return (i);
 }
 
-char	*join_init(char *res, char const *s1, char const *s2, int i)
+void		*ft_memmove(void *dst, const void *src, size_t len)
 {
-	int j;
+	char *d;
+	char *s;
 
-	j = 0;
-	while (s1[i])
+	d = (char *)dst;
+	s = (char *)src;
+	if (dst == src)
+		return (dst);
+	if (s < d)
 	{
-		res[j] = s1[i];
-		i++;
-		j++;
+		while (len--)
+			*(d + len) = *(s + len);
+		return (dst);
 	}
-	i = 0;
-	while (s2[i])
-	{
-		res[j] = s2[i];
-		i++;
-		j++;
-	}
-	res[j] = '\0';
-	return (res);
+	while (len--)
+		*d++ = *s++;
+	return (dst);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int		len;
+	size_t	lens1;
+	size_t	lens2;
+	size_t	lentot;
 	char	*res;
 
-	if (!s1 || !s2)
+	if (!s1 && !s2)
 		return (0);
-	len = (ft_strlen(s1) + ft_strlen(s2));
-	if (!(res = malloc(sizeof(char) * (len + 1))))
+	lens1 = ft_strlen(s1);
+	lens2 = ft_strlen(s2);
+	lentot = (lens1 + lens2);
+	if (!(res = malloc(sizeof(char) * (lentot + 1))))
 		return (0);
-	join_init(res, s1, s2, 0);
+	ft_memmove(res, s1, lens1);
+	ft_memmove(res + lens1, s2, lens2);
+	res[lentot] = '\0';
+	free((char *)s1);
 	return (res);
 }
 
