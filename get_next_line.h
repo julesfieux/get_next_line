@@ -6,7 +6,7 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 10:42:16 by jfieux            #+#    #+#             */
-/*   Updated: 2021/01/25 19:04:25 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/01/26 11:04:39 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-int 	get_next_line(int fd, char **line);
+int		get_next_line(int fd, char **line);
 char	*ft_strjoin(char const *s1, char const *s2);
 int		ft_found_return(char *str);
-size_t		ft_strlen(const char *str);
+size_t	ft_strlen(const char *str);
 
 #endif

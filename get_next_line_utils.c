@@ -6,7 +6,7 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 10:44:51 by jfieux            #+#    #+#             */
-/*   Updated: 2021/01/25 19:04:20 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/01/26 11:05:12 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void		*ft_memmove(void *dst, const void *src, size_t len)
 	return (dst);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char		*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	lens1;
 	size_t	lens2;
@@ -65,7 +65,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (res);
 }
 
-int		ft_found_return(char *str)
+int			ft_found_return(char *str)
 {
 	int i;
 
