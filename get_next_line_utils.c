@@ -6,13 +6,13 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 10:44:51 by jfieux            #+#    #+#             */
-/*   Updated: 2021/01/26 11:05:12 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/01/27 16:33:07 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t		ft_strlen(const char *str)
+int		ft_strlen(const char *str)
 {
 	int i;
 
@@ -24,44 +24,27 @@ size_t		ft_strlen(const char *str)
 	return (i);
 }
 
-void		*ft_memmove(void *dst, const void *src, size_t len)
+char	*ft_strjoin(char *s1, char *s2)
 {
-	char *d;
-	char *s;
-
-	d = (char *)dst;
-	s = (char *)src;
-	if (dst == src)
-		return (dst);
-	if (s < d)
-	{
-		while (len--)
-			*(d + len) = *(s + len);
-		return (dst);
-	}
-	while (len--)
-		*d++ = *s++;
-	return (dst);
-}
-
-char		*ft_strjoin(char const *s1, char const *s2)
-{
-	size_t	lens1;
-	size_t	lens2;
-	size_t	lentot;
+	int		len;
 	char	*res;
+	int		i;
+	int		j;
 
-	if (!s1 && !s2)
+	if (!s1 || !s2)
 		return (0);
-	lens1 = ft_strlen(s1);
-	lens2 = ft_strlen(s2);
-	lentot = (lens1 + lens2);
-	if (!(res = malloc(sizeof(char) * (lentot + 1))))
+	len = (ft_strlen(s1) + ft_strlen(s2));
+	if (!(res = malloc(sizeof(char) * (len + 1))))
 		return (0);
-	ft_memmove(res, s1, lens1);
-	ft_memmove(res + lens1, s2, lens2);
-	res[lentot] = '\0';
-	free((char *)s1);
+	i = 0;
+	j = 0;
+	while (s1[i])
+		res[j++] = s1[i++];
+	i = 0;
+	while (s2[i])
+		res[j++] = s2[i++];
+	res[j] = '\0';
+	free(s1);
 	return (res);
 }
 
@@ -72,7 +55,7 @@ int			ft_found_return(char *str)
 	i = 0;
 	if (!str)
 		return (0);
-	while (str[i])
+	while (str[i] != '\0')
 	{
 		if (str[i] == '\n')
 			return (1);
