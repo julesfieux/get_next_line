@@ -6,7 +6,7 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 10:44:51 by jfieux            #+#    #+#             */
-/*   Updated: 2021/01/27 16:33:07 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/01/27 18:27:33 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (res);
 }
 
-int			ft_found_return(char *str)
+int		ft_found_return(char *str)
 {
 	int i;
 

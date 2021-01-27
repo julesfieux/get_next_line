@@ -6,7 +6,7 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 10:42:16 by jfieux            #+#    #+#             */
-/*   Updated: 2021/01/27 11:08:44 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/01/27 18:28:20 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-#ifndef BUFFER_SIZE
-#define BUFFER_SIZE 5
-#endif
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 5
+
+# endif
 
 int		get_next_line(int fd, char **line);
 char	*ft_strjoin(char *s1, char *s2);
