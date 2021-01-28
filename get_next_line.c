@@ -6,7 +6,7 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 10:44:24 by jfieux            #+#    #+#             */
-/*   Updated: 2021/01/28 18:00:09 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/01/28 18:16:36 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,17 @@ char	*ft_new_save(char *str)
 	return (res);
 }
 
+int		ft_mall_save(char **save)
+{
+	if (!*save)
+	{
+		if ((*save = malloc(sizeof(char) * 1)) == NULL)
+			return (-1);
+		*save[0] = '\0';
+	}
+	return (1);
+}
+
 int		get_next_line(int fd, char **line)
 {
 	int			ret;
@@ -70,12 +81,8 @@ int		get_next_line(int fd, char **line)
 	ret = 1;
 	if (fd < 0 || !line || BUFFER_SIZE < 1)
 		return (-1);
-	if (!save)
-	{
-		if ((save = malloc(sizeof(char) * 1)) == NULL)
-			return (-1);
-		save[0] = '\0';
-	}
+	if (ft_mall_save(&save) < 0)
+		return (-1);
 	while (ft_found_return(save) == 0 && ret != 0)
 	{
 		if ((ret = read(fd, buf, BUFFER_SIZE)) == -1)
