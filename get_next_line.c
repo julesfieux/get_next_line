@@ -6,7 +6,7 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 10:44:24 by jfieux            #+#    #+#             */
-/*   Updated: 2021/01/28 17:57:42 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/01/28 18:00:09 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int		get_next_line(int fd, char **line)
 	{
 		if ((ret = read(fd, buf, BUFFER_SIZE)) == -1)
 		{
-			free(save[fd]);
+			free(save);
 			return (-1);
 		}
 		buf[ret] = '\0';
