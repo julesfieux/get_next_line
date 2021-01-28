@@ -6,7 +6,7 @@
 /*   By: jfieux <jfieux@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/11 10:44:24 by jfieux            #+#    #+#             */
-/*   Updated: 2021/01/28 11:56:29 by jfieux           ###   ########.fr       */
+/*   Updated: 2021/01/28 17:57:20 by jfieux           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,10 @@ int		get_next_line(int fd, char **line)
 	while (ft_found_return(save[fd]) == 0 && ret != 0)
 	{
 		if ((ret = read(fd, buf, BUFFER_SIZE)) == -1)
+		{
+			free(save[fd]);
 			return (-1);
+		}
 		buf[ret] = '\0';
 		save[fd] = ft_strjoin(save[fd], buf);
 	}
